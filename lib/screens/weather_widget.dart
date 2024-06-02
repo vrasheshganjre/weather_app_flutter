@@ -33,39 +33,39 @@ class WeatherWidget extends GetView<HomeController> {
               Text(
                 "Feels like ${currentWeather.feelslikeC!.round()}\u2103",
               ),
-              _fields("Humidity",
+              fields("Humidity",
                   ("${controller.forecastModel.value.current!.humidity} %")),
-              _fields("Pressure",
+              fields("Pressure",
                   ("${(controller.forecastModel.value.current!.pressureMb!) / 1000} Bars")),
-              _fields("Cloud cover",
+              fields("Cloud cover",
                   ("${controller.forecastModel.value.current!.cloud} %")),
-              _fields("Precipitation",
+              fields("Precipitation",
                   ("${controller.forecastModel.value.current!.precipMm} mm")),
-              _fields("UV Index",
+              fields("UV Index",
                   ("${controller.forecastModel.value.current!.uv}")),
-              _fields("Wind speed",
+              fields("Wind speed",
                   ("${controller.forecastModel.value.current!.windKph} kmph")),
-              _fields("Wind direction",
+              fields("Wind direction",
                   ("${controller.forecastModel.value.current!.windDir}")),
               const Text(
                 "AQI",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-              _fields("CO",
+              fields("CO",
                   ("${controller.forecastModel.value.current!.airQuality!["co"]} μg/㎥")),
-              _fields("O₃",
+              fields("O₃",
                   ("${controller.forecastModel.value.current!.airQuality!["o3"]} μg/㎥")),
-              _fields("NO₂",
+              fields("NO₂",
                   ("${controller.forecastModel.value.current!.airQuality!["no2"]} μg/㎥")),
-              _fields("SO₂",
+              fields("SO₂",
                   ("${controller.forecastModel.value.current!.airQuality!["so2"]} μg/㎥")),
-              _fields("PM2.5",
+              fields("PM2.5",
                   ("${controller.forecastModel.value.current!.airQuality!["pm2_5"]} μg/㎥")),
-              _fields("PM10",
+              fields("PM10",
                   ("${controller.forecastModel.value.current!.airQuality!["pm10"]} μg/㎥")),
-              _fields("US - EPA standard",
+              fields("US - EPA standard",
                   ("${controller.forecastModel.value.current!.airQuality!["us-epa-index"]}")),
-              _fields("UK Defra Index",
+              fields("UK Defra Index",
                   ("${controller.forecastModel.value.current!.airQuality!["gb-defra-index"]}")),
               TextButton(
                   onPressed: () {
@@ -83,7 +83,7 @@ class WeatherWidget extends GetView<HomeController> {
   }
 }
 
-Widget _fields(String heading, String value) => Container(
+Widget fields(String heading, String value) => Container(
       padding: const EdgeInsets.all(10),
       width: 300,
       child: Row(

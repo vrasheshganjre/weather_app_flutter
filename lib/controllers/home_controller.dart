@@ -93,6 +93,7 @@ class HomeController extends GetxController {
         positionInLatAndLon:
             "${currentLocation.value.lat},${currentLocation.value.lon}");
     forecastModel.value = ForecastModel.fromJson(result);
+    print(forecastModel.value.forecast!.forecastday!);
     isLoading.value = false;
   }
 }

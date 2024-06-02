@@ -312,14 +312,13 @@ class Day {
   double? totalsnowCm;
   double? avgvisKm;
   double? avgvisMiles;
-  double? avghumidity;
+  int? avghumidity;
   int? dailyWillItRain;
   int? dailyChanceOfRain;
   int? dailyWillItSnow;
   int? dailyChanceOfSnow;
   Condition? condition;
   double? uv;
-  Map<String, String>? airQuality;
 
   Day({
     this.maxtempC,
@@ -342,7 +341,6 @@ class Day {
     this.dailyChanceOfSnow,
     this.condition,
     this.uv,
-    this.airQuality,
   });
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
@@ -368,8 +366,6 @@ class Day {
             ? null
             : Condition.fromJson(json["condition"]),
         uv: json["uv"],
-        airQuality: Map.from(json["air_quality"]!)
-            .map((k, v) => MapEntry<String, String>(k, v.toString())),
       );
 
   Map<String, dynamic> toJson() => {
@@ -393,8 +389,6 @@ class Day {
         "daily_chance_of_snow": dailyChanceOfSnow,
         "condition": condition?.toJson(),
         "uv": uv,
-        "air_quality": Map.from(airQuality!)
-            .map((k, v) => MapEntry<String, dynamic>(k, v.toString())),
       };
 }
 
@@ -432,7 +426,6 @@ class Hour {
   double? gustMph;
   double? gustKph;
   double? uv;
-  Map<String, String>? airQuality;
 
   Hour({
     this.timeEpoch,
@@ -468,48 +461,44 @@ class Hour {
     this.gustMph,
     this.gustKph,
     this.uv,
-    this.airQuality,
   });
 
   factory Hour.fromJson(Map<String, dynamic> json) => Hour(
-        timeEpoch: json["time_epoch"],
-        time: json["time"],
-        tempC: json["temp_c"]?.toDouble(),
-        tempF: json["temp_f"]?.toDouble(),
-        isDay: json["is_day"],
-        condition: json["condition"] == null
-            ? null
-            : Condition.fromJson(json["condition"]),
-        windMph: json["wind_mph"]?.toDouble(),
-        windKph: json["wind_kph"]?.toDouble(),
-        windDegree: json["wind_degree"],
-        windDir: json["wind_dir"],
-        pressureMb: json["pressure_mb"],
-        pressureIn: json["pressure_in"]?.toDouble(),
-        precipMm: json["precip_mm"]?.toDouble(),
-        precipIn: json["precip_in"]?.toDouble(),
-        humidity: json["humidity"],
-        cloud: json["cloud"],
-        feelslikeC: json["feelslike_c"]?.toDouble(),
-        feelslikeF: json["feelslike_f"]?.toDouble(),
-        windchillC: json["windchill_c"]?.toDouble(),
-        windchillF: json["windchill_f"]?.toDouble(),
-        heatindexC: json["heatindex_c"]?.toDouble(),
-        heatindexF: json["heatindex_f"]?.toDouble(),
-        dewpointC: json["dewpoint_c"]?.toDouble(),
-        dewpointF: json["dewpoint_f"]?.toDouble(),
-        willItRain: json["will_it_rain"],
-        chanceOfRain: json["chance_of_rain"],
-        willItSnow: json["will_it_snow"],
-        chanceOfSnow: json["chance_of_snow"],
-        visKm: json["vis_km"],
-        visMiles: json["vis_miles"],
-        gustMph: json["gust_mph"]?.toDouble(),
-        gustKph: json["gust_kph"]?.toDouble(),
-        uv: json["uv"],
-        airQuality: Map.from(json["air_quality"]!)
-            .map((k, v) => MapEntry<String, String>(k, v.toString())),
-      );
+      timeEpoch: json["time_epoch"],
+      time: json["time"],
+      tempC: json["temp_c"]?.toDouble(),
+      tempF: json["temp_f"]?.toDouble(),
+      isDay: json["is_day"],
+      condition: json["condition"] == null
+          ? null
+          : Condition.fromJson(json["condition"]),
+      windMph: json["wind_mph"]?.toDouble(),
+      windKph: json["wind_kph"]?.toDouble(),
+      windDegree: json["wind_degree"],
+      windDir: json["wind_dir"],
+      pressureMb: json["pressure_mb"],
+      pressureIn: json["pressure_in"]?.toDouble(),
+      precipMm: json["precip_mm"]?.toDouble(),
+      precipIn: json["precip_in"]?.toDouble(),
+      humidity: json["humidity"],
+      cloud: json["cloud"],
+      feelslikeC: json["feelslike_c"]?.toDouble(),
+      feelslikeF: json["feelslike_f"]?.toDouble(),
+      windchillC: json["windchill_c"]?.toDouble(),
+      windchillF: json["windchill_f"]?.toDouble(),
+      heatindexC: json["heatindex_c"]?.toDouble(),
+      heatindexF: json["heatindex_f"]?.toDouble(),
+      dewpointC: json["dewpoint_c"]?.toDouble(),
+      dewpointF: json["dewpoint_f"]?.toDouble(),
+      willItRain: json["will_it_rain"],
+      chanceOfRain: json["chance_of_rain"],
+      willItSnow: json["will_it_snow"],
+      chanceOfSnow: json["chance_of_snow"],
+      visKm: json["vis_km"],
+      visMiles: json["vis_miles"],
+      gustMph: json["gust_mph"]?.toDouble(),
+      gustKph: json["gust_kph"]?.toDouble(),
+      uv: json["uv"]);
 
   Map<String, dynamic> toJson() => {
         "time_epoch": timeEpoch,
@@ -545,8 +534,6 @@ class Hour {
         "gust_mph": gustMph,
         "gust_kph": gustKph,
         "uv": uv,
-        "air_quality": Map.from(airQuality!)
-            .map((k, v) => MapEntry<String, dynamic>(k, v.toString())),
       };
 }
 

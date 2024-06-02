@@ -17,11 +17,20 @@ class ApiCalls {
     if (position != null) {
       Map? location = await _getLocation(position);
 
-      queryParameter = {"q": "${location!["address"]["city"]}"};
+      queryParameter = {
+        "q": "${location!["address"]["city"]}",
+        "aqi": "yes",
+      };
     } else if (city != null) {
-      queryParameter = {"q": city};
+      queryParameter = {
+        "q": city,
+        "aqi": "yes",
+      };
     } else if (positionInLatAndLon != null) {
-      queryParameter = {"q": positionInLatAndLon};
+      queryParameter = {
+        "q": positionInLatAndLon,
+        "aqi": "yes",
+      };
     }
     http.Response response = await http.get(
         Uri.https("api.weatherapi.com", "/v1/current.json", queryParameter),
@@ -36,7 +45,7 @@ class ApiCalls {
     if (position != null) {
       queryParameter = {
         "q": "${position.latitude},${position.longitude}",
-        "days": "14",
+        "days": "3",
         "aqi": "yes",
         "alert": "yes"
       };
@@ -45,7 +54,7 @@ class ApiCalls {
     } else if (positionInLatAndLon != null) {
       queryParameter = {
         "q": positionInLatAndLon,
-        "day": "3",
+        "days": "3",
         "aqi": "yes",
         "alert": "yes"
       };
@@ -56,6 +65,7 @@ class ApiCalls {
           headers: {"key": apiKey});
       return jsonDecode(response.body);
     } catch (e) {
+      print(e);
       Fluttertoast.showToast(
           msg: "Error sending request \nPlease check network connection");
       return false;
@@ -72,6 +82,7 @@ class ApiCalls {
           .get(Uri.https("geocode.maps.co", "reverse", queryParameter));
       return jsonDecode(response.body);
     } catch (e) {
+      print(e);
       Fluttertoast.showToast(
           msg: "Error sending request \nPlease check network connection");
       return false;
@@ -93,7 +104,6 @@ class ApiCalls {
         ),
         headers: {
           'X-RapidAPI-Key': rapidApiKey,
-          'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
         });
 
     return jsonDecode(response.body);

@@ -19,6 +19,12 @@ class SearchScreeen extends GetView<HomeController> {
             await controller.getLocationSuggestions();
             controller.isLoading.value = false;
           },
+          decoration: InputDecoration(
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    controller.textController.clear();
+                  },
+                  icon: const Icon(Icons.close))),
         ),
       ),
       body: Obx(() => controller.isLoading.value
